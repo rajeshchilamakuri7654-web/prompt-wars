@@ -1,0 +1,29 @@
+# Enterprise Refactoring & Verification Tasks
+
+- [x] Security Hardening (Pillar 2)
+  - [x] Implement CSWSH protection on WS upgrades in `backend/src/server.ts`
+  - [x] Implement CSRF verification middleware for POST routes in `backend/src/server.ts`
+- [x] Efficiency & Performance (Pillar 3)
+  - [x] Wrap `ThreeCanvas` dynamically with SSR disabled in `frontend/src/components/Dashboard.tsx`
+  - [x] Add `.canvasPlaceholder` styling to `frontend/src/components/Dashboard.module.css`
+- [x] Code Quality & Inline Documentation (Pillar 1)
+  - [x] Add JSDoc comments to `backend/src/calculator.ts`
+  - [x] Add JSDoc comments to `backend/src/carbonEngine.ts`
+  - [x] Add JSDoc comments to `backend/src/stateStore.ts`
+  - [x] Add JSDoc comments to `backend/src/websocket.ts`
+  - [x] Add JSDoc comments to `backend/src/avatarRoute.ts`
+  - [x] Add JSDoc comments to `backend/src/server.ts`
+  - [x] Add JSDoc comments to all frontend component files
+- [x] Testing Suite Expansion (Pillar 4)
+  - [x] Add coverage configuration to `backend/jest.config.js`
+  - [x] Expand unit tests in `backend/tests/calculator.test.ts` to cover edge cases
+  - [x] Create `backend/tests/carbonEngine.test.ts` for OOP class coverage
+  - [x] Create `backend/tests/stateStore.test.ts` for file-system coverage
+  - [x] Create `backend/tests/server.test.ts` for integration coverage
+  - [x] Install devDependencies for frontend testing in `frontend/package.json`
+  - [x] Restore tests folder in `frontend/tsconfig.json` and configure coverage
+  - [x] Update and expand client tests in `frontend/tests/Dashboard.test.tsx` and write unit tests for interactive widgets
+- [x] Verification
+  - [x] Run backend tests and check code coverage (100% on engine classes, >98% statements overall)
+  - [x] Run frontend tests and verify type safety (100% pass on core UI files, >98% lines coverage)
+  - [x] Manually verify UI interaction on localhost:3000

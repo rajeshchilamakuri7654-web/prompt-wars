@@ -1,0 +1,244 @@
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: var(--glass-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: card-rise 0.7s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 0.75rem;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, #ffffff 0%, hsl(var(--accent-green)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  color: hsl(var(--text-muted));
+  margin-top: 2px;
+}
+
+/* ── Drop Zone ──────────────────────────────────────────────────────────── */
+.dropZone {
+  position: relative;
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background 0.3s ease;
+  text-align: center;
+  min-height: 140px;
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.dropZone:hover,
+.dropZone.dragOver {
+  border-color: hsl(var(--accent-green));
+  background: rgba(0, 230, 118, 0.04);
+  box-shadow: 0 0 15px rgba(0, 230, 118, 0.1);
+}
+
+.dropZone:focus-visible {
+  outline: 2px solid hsl(var(--accent-green));
+  outline-offset: 2px;
+}
+
+.dropIcon {
+  color: hsl(var(--text-muted));
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.dropZone:hover .dropIcon,
+.dropZone.dragOver .dropIcon {
+  color: hsl(var(--accent-green));
+  transform: scale(1.1);
+}
+
+.dropText {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: hsl(var(--text-secondary));
+}
+
+.dropSubtext {
+  font-size: 0.72rem;
+  color: hsl(var(--text-muted));
+}
+
+/* Hidden native file input */
+.fileInput {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* ── Preview & Result Grid ──────────────────────────────────────────────── */
+.imageGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.imageSlot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.slotLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: hsl(var(--text-muted));
+}
+
+.previewImg {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: block;
+}
+
+.resultImg {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 230, 118, 0.25);
+  box-shadow: 0 0 20px rgba(0, 230, 118, 0.15);
+  display: block;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(var(--text-muted));
+  font-size: 0.75rem;
+}
+
+/* ── Generate Button ────────────────────────────────────────────────────── */
+.generateBtn {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, rgba(0, 230, 118, 0.15), rgba(0, 242, 254, 0.1));
+  border: 1px solid rgba(0, 230, 118, 0.3);
+  border-radius: 12px;
+  color: hsl(var(--accent-green));
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.generateBtn:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(0, 230, 118, 0.25), rgba(0, 242, 254, 0.18));
+  box-shadow: 0 0 20px rgba(0, 230, 118, 0.25);
+  transform: translateY(-1px);
+}
+
+.generateBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.generateBtn:focus-visible {
+  outline: 2px solid hsl(var(--accent-green));
+  outline-offset: 3px;
+}
+
+/* Spinner inside button */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 230, 118, 0.3);
+  border-top-color: hsl(var(--accent-green));
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Download link */
+.downloadLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: hsl(var(--accent-cyan));
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.downloadLink:hover {
+  text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+}
+
+/* Error message */
+.errorMsg {
+  font-size: 0.82rem;
+  color: hsl(var(--accent-red));
+  text-align: center;
+  padding: 0.5rem;
+  background: rgba(255, 61, 0, 0.06);
+  border: 1px solid rgba(255, 61, 0, 0.15);
+  border-radius: 8px;
+}
+
+/* Prompt disclosure */
+.promptDisclosure {
+  font-size: 0.7rem;
+  color: hsl(var(--text-muted));
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  line-height: 1.5;
+}
+
+.promptLabel {
+  font-weight: 700;
+  color: hsl(var(--text-secondary));
+  margin-bottom: 2px;
+  display: block;
+}

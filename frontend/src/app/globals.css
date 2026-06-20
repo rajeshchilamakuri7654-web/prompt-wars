@@ -1,0 +1,234 @@
+/* Custom Design System for Carbon Footprint Awareness Platform */
+:root {
+  /* HSL Color Palette (WCAG AAA Compliant Contrast ≥7:1) */
+  --bg-primary:    224 53% 4%;
+  --bg-secondary:  224 45% 8%;
+
+  /* Text — bumped to meet WCAG AAA on dark bg */
+  --text-primary:   0 0% 100%;
+  --text-secondary: 215 25% 82%;   /* was 75% — lifted for AAA */
+  --text-muted:     215 20% 65%;   /* was 55% — lifted for AAA */
+
+  /* Glowing Accent Colors */
+  --accent-cyan:   180 100% 48%;
+  --accent-purple: 270 95%  65%;
+  --accent-green:  145 80%  48%;
+  --accent-orange:  25 95%  55%;
+  --accent-red:    355 85%  55%;
+
+  /* Glassmorphism Defaults */
+  --glass-bg:           rgba(10, 15, 30, 0.45);
+  --glass-border:       rgba(255, 255, 255, 0.08);
+  --glass-glow-cyan:    0 0 20px rgba(0, 242, 254, 0.15);
+  --glass-glow-purple:  0 0 20px rgba(186, 104, 200, 0.15);
+  --glass-glow-green:   0 0 20px rgba(0, 230, 118, 0.15);
+  --glass-shadow:       0 16px 40px -10px rgba(0, 0, 0, 0.5);
+
+  /* Chromatic border gradient (rotates on hover) */
+  --chromatic-border: linear-gradient(
+    135deg,
+    hsl(var(--accent-cyan))   0%,
+    hsl(var(--accent-purple)) 50%,
+    hsl(var(--accent-green))  100%
+  );
+
+  /* Fonts */
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast:   all 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: hsl(var(--bg-primary));
+  color: hsl(var(--text-primary));
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Weightless Drifting Background Blobs */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  width: 60vw;
+  height: 60vw;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: -1;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+body::before {
+  background: radial-gradient(circle, hsl(var(--accent-cyan)), transparent 70%);
+  top: -20%;
+  left: -10%;
+  animation: drift-slow 25s infinite alternate ease-in-out;
+}
+
+body::after {
+  background: radial-gradient(circle, hsl(var(--accent-purple)), transparent 70%);
+  bottom: -20%;
+  right: -10%;
+  animation: drift-slower 30s infinite alternate ease-in-out;
+}
+
+@keyframes drift-slow {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(10vw, 8vh) scale(1.1);
+  }
+}
+
+@keyframes drift-slower {
+  0% {
+    transform: translate(0, 0) scale(1.1);
+  }
+  100% {
+    transform: translate(-8vw, -10vh) scale(0.9);
+  }
+}
+
+/* Custom Floating / Drifting for Widgets */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--bg-primary));
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* A11y Focus Styles */
+*:focus-visible {
+  outline: 2px solid hsl(var(--accent-cyan));
+  outline-offset: 4px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ─── New Hackathon Keyframe Animations ──────────────────────── */
+
+/* Shimmer sweep — used on loading states and card borders */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--text-secondary)) 25%,
+    hsl(var(--accent-cyan))    50%,
+    hsl(var(--text-secondary)) 75%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Aurora drift — third background layer, green accent */
+body::before {
+  /* already has drift-slow — add a pseudo aurora overlay via outline */
+  box-shadow: inset 0 0 80px rgba(0, 230, 118, 0.04);
+}
+
+@keyframes aurora-drift {
+  0%   { opacity: 0.10; transform: translate(0,  0)   scale(1.0); }
+  33%  { opacity: 0.18; transform: translate(5vw, 4vh) scale(1.08); }
+  66%  { opacity: 0.12; transform: translate(-3vw, 7vh) scale(0.96); }
+  100% { opacity: 0.10; transform: translate(0,  0)   scale(1.0); }
+}
+
+/* Card rise — entrance animation for new panels */
+@keyframes card-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.card-rise {
+  animation: card-rise 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Chromatic border hover utility class */
+.chromatic-hover {
+  position: relative;
+  border-radius: inherit;
+}
+.chromatic-hover::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: var(--chromatic-border);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+.chromatic-hover:hover::after {
+  opacity: 0.6;
+}
+
+/* ─── Accessibility: prefers-reduced-motion ──────────────────── */
+/* Wraps ALL animation declarations — users with vestibular disorders
+   will get instant transitions instead of motion-heavy effects.     */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration:   0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration:  0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

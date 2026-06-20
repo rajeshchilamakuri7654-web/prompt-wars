@@ -1,0 +1,189 @@
+.panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 230, 118, 0.1);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: var(--glass-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: card-rise 0.65s 0.1s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.header {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding-bottom: 0.75rem;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 4px;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff 0%, hsl(var(--accent-green)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 0.73rem;
+  color: hsl(var(--text-muted));
+  line-height: 1.4;
+}
+
+/* Total cost summary */
+.costSummary {
+  background: rgba(0, 230, 118, 0.05);
+  border: 1px solid rgba(0, 230, 118, 0.12);
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.costLabel {
+  font-size: 0.75rem;
+  color: hsl(var(--text-secondary));
+  font-weight: 600;
+}
+
+.costValue {
+  font-size: 1.3rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: hsl(var(--accent-green));
+  font-variant-numeric: tabular-nums;
+}
+
+.costUnit {
+  font-size: 0.7rem;
+  color: hsl(var(--text-muted));
+  font-family: var(--font-sans);
+  font-weight: 600;
+}
+
+/* Project cards grid */
+.projectGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.projectCard {
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  transition: var(--transition-fast);
+}
+
+.projectCard:hover {
+  border-color: rgba(0, 230, 118, 0.2);
+  background: rgba(0, 230, 118, 0.03);
+  transform: translateX(2px);
+}
+
+.projectLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.projectEmoji {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.projectName {
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: hsl(var(--text-primary));
+}
+
+.projectMeta {
+  font-size: 0.7rem;
+  color: hsl(var(--text-muted));
+  line-height: 1.35;
+}
+
+.projectBadge {
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 6px;
+  margin-top: 2px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.badgeGold     { background: rgba(255,193,7,0.12); color: #ffc107; border: 1px solid rgba(255,193,7,0.2); }
+.badgeVerified { background: rgba(0,230,118,0.10); color: hsl(var(--accent-green)); border: 1px solid rgba(0,230,118,0.2); }
+.badgeVcs      { background: rgba(0,242,254,0.10); color: hsl(var(--accent-cyan)); border: 1px solid rgba(0,242,254,0.2); }
+
+.projectRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.projectPrice {
+  font-size: 0.88rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: hsl(var(--accent-green));
+}
+
+.projectPerTonne {
+  font-size: 0.62rem;
+  color: hsl(var(--text-muted));
+  white-space: nowrap;
+}
+
+.offsetCta {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: hsl(var(--accent-green));
+  background: rgba(0, 230, 118, 0.08);
+  border: 1px solid rgba(0, 230, 118, 0.2);
+  border-radius: 8px;
+  padding: 0.3rem 0.65rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+}
+
+.offsetCta:hover {
+  background: rgba(0, 230, 118, 0.18);
+  box-shadow: 0 0 10px rgba(0, 230, 118, 0.2);
+}
+
+.offsetCta:focus-visible {
+  outline: 2px solid hsl(var(--accent-green));
+  outline-offset: 2px;
+}
+
+.disclaimer {
+  font-size: 0.66rem;
+  color: hsl(var(--text-muted));
+  line-height: 1.5;
+  padding-top: 0.25rem;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}

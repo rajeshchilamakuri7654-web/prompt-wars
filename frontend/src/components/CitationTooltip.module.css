@@ -1,0 +1,139 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  color: hsl(var(--accent-cyan));
+  font-size: 0.7rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  line-height: 1;
+  padding: 0;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+.icon:hover {
+  background: rgba(0, 242, 254, 0.1);
+  border-color: hsl(var(--accent-cyan));
+  box-shadow: 0 0 8px rgba(0, 242, 254, 0.3);
+}
+
+.icon:focus-visible {
+  outline: 2px solid hsl(var(--accent-cyan));
+  outline-offset: 2px;
+}
+
+/* Invisible backdrop to catch outside-clicks */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  cursor: default;
+}
+
+/* Popover card */
+.popover {
+  position: absolute;
+  z-index: 100;
+  min-width: 260px;
+  max-width: 320px;
+  background: rgba(8, 12, 28, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 242, 254, 0.18);
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  box-shadow: 0 20px 48px rgba(0,0,0,0.55), 0 0 0 1px rgba(0,242,254,0.05);
+  animation: fadeIn 0.15s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.popoverTop    { bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); }
+.popoverBottom { top:    calc(100% + 8px); left: 50%; transform: translateX(-50%); }
+
+.popoverHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.popoverTitle {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: hsl(var(--accent-cyan));
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: hsl(var(--text-muted));
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: var(--transition-fast);
+  line-height: 1;
+}
+
+.closeBtn:hover {
+  background: rgba(255,255,255,0.06);
+  color: hsl(var(--text-primary));
+}
+
+.closeBtn:focus-visible {
+  outline: 2px solid hsl(var(--accent-cyan));
+}
+
+.citationList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.citationItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.citationSource {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: hsl(var(--accent-cyan));
+  text-decoration: none;
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+}
+
+.citationSource:hover {
+  text-shadow: 0 0 8px rgba(0,242,254,0.4);
+  text-decoration: underline;
+}
+
+.citationDetail {
+  font-size: 0.68rem;
+  color: hsl(var(--text-muted));
+  line-height: 1.45;
+}
