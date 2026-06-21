@@ -146,9 +146,10 @@ export function ThreeCanvas({ score, burstTrigger = 0 }: ThreeCanvasProps) {
     ───────────────────────────────────────────── */
     let gltfModel: THREE.Object3D | null = null;
 
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
     const loader = new GLTFLoader();
     loader.load(
-      '/models/eco-orb.glb',
+      `${basePath}/models/eco-orb.glb`,
       (gltf) => {
         gltfModel = gltf.scene;
         gltfModel.scale.setScalar(0.8);
