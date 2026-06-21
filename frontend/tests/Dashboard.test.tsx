@@ -22,7 +22,7 @@ jest.mock('../src/hooks/useCarbonWS', () => ({
       total: 6000,
       breakdown: { transport: 1000, diet: 1000, housing: 1000 },
       simulation: [
-        { id: 'sim1', title: 'Test Habit', savingsKg: 1500, newTotal: 4500 }
+        { id: 'sim1', category: 'transport', title: 'Test Habit', description: 'Test habit description', savings: 1500 }
       ]
     },
     inputs: {

@@ -4,7 +4,7 @@ import React, { useState, useCallback, useRef, DragEvent, ChangeEvent } from 're
 import { Upload, Leaf, Download } from 'lucide-react';
 import styles from './EcoAvatar.module.css';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || '';
 
 const ACCEPTED_TYPES  = ['image/jpeg', 'image/png', 'image/webp'];
 const MAX_SIZE_BYTES  = 5 * 1024 * 1024; // 5 MB
