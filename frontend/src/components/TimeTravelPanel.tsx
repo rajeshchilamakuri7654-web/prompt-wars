@@ -5,7 +5,7 @@ import { Hourglass } from 'lucide-react';
 import styles from './TimeTravelPanel.module.css';
 import type { CarbonInput } from '../hooks/useCarbonWS';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || '';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
 interface YearProjection {
   year:             number;

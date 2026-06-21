@@ -46,7 +46,7 @@ const DEFAULT_INPUTS: CarbonInput = {
   powerSource: 'grid',
 };
 
-const BACKEND_HTTP_URL = process.env.NEXT_PUBLIC_API_URL || '';
+const BACKEND_HTTP_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 const BACKEND_WS_URL = process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:5000';
 
 /**
